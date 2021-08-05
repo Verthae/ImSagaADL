@@ -3,7 +3,7 @@ import json
 import os
 
 chara_url = '{url}resources/charaPtn/{charaID}/chara.{typed}'
-spine_format = '{url}resources/character/{charaID}/battlewait.{typed}'
+spine_format = '{url}resources/character/{charaID}/battleWait.{typed}'
 types = ['png', 'atlas', 'json']
 card_url = '{url}resources/{path}/{charaID}.png'
 sources = ['charaCard/chara', 'charaCard/card', 'charaFace', 'charaFaceImg']
@@ -38,10 +38,13 @@ if __name__ == '__main__':
             for filetype in types:
                 dl_file = requests.get(spine_format.format(url=urlBase, charaID=chara, typed=filetype))
                 if dl_file.status_code == 200:
-                    with open(f'chara/{chara}/{chara}_battlewait.{filetype}', 'wb') as file:
+                    with open(f'chara/{chara}/{chara}_battleWait.{filetype}', 'wb') as file:
                         file.write(dl_file.content)
             # card_url
             for source in sources:
-                with open(f'chara/{chara}/{chara}_{source.split("/")[-1]}.png', 'wb') as file:
-                    file.write(requests.get(card_url.format(url=urlBase, path=source, charaID=chara)).content)
+                print(f'chara/{chara}/{chara}_{source.split("/")[-1]}.png')
+                dl_file = requests.get(card_url.format(url=urlBase, path=source, charaID=chara))
+                if dl_file.status_code == 200:
+                    with open(f'chara/{chara}/{chara}_{source.split("/")[-1]}.png', 'wb') as file:
+                        file.write(dl_file.content)
 
