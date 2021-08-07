@@ -23,6 +23,10 @@ os.makedirs(os.path.join(ROOT, 'chara'), exist_ok=True)
 os.makedirs(os.path.join(ROOT, 'sound'), exist_ok=True)
 
 
+def to_dict(line):
+    entry = line.split('\t')
+
+
 # Preparing for MultiProcessing
 def build_url_list(chara_id, base_url, filter_list):
     # Build a list of URLs [chara.png/.atlas, battleWait.png/.atlas/.json, charaCard/chara - card - face -Img .png
@@ -98,3 +102,4 @@ if __name__ == '__main__':
         if not index % 10:
             file_list_obj.close()
             file_list_obj = open(file_list_fp, 'at')
+    file_list_obj.close()
