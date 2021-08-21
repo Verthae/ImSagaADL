@@ -371,7 +371,7 @@ class DownloadTree(ttk.Labelframe):
 
 def main():
     root = tk.Tk()
-    root.title = "Imperial Saga Asset Downloader"
+    root.title("Imperial Saga Asset Downloader")
     root.minsize(400, 300)
     my_app = App(root, padding=5)
     my_app.pack(fill=tk.BOTH, expand=True)
