@@ -288,7 +288,7 @@ class App(ttk.Frame):
     def __init__(self, parent, **kwargs):
         ttk.Frame.__init__(self, parent, **kwargs)
         self.app_config = generate_config("config.ini")
-        self.bsStyle = Style(theme="darktree")
+        self.bsStyle = Style(theme="darkly")
         self.interrupt = tk.BooleanVar(value=False)
         self.chara_config = CharButtonGrid(self, self.app_config["Character"], text="Character", height=30, padding=10)
         self.chara_config.pack(fill=tk.X)
